@@ -1,0 +1,33 @@
+.main {
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 12px;
+  max-width: 500px;
+  margin: auto;
+  background: #ebebeb;
+  padding: 10px;
+  font-size: 40px;
+  margin-top: 200px;
+}
+
+button {
+  font-size: 20px;
+  padding: 10px 30px;
+  border-radius: 20px;
+  margin-bottom: 50px;
+  color: #ebebeb;
+}
+
+button:focus {outline:0;}
+
+.btn-one {
+  background-color: red;
+}
+
+.btn-two {
+  background-color: orange;
+}
+
+.btn-three {
+  background-color: green;
+}
