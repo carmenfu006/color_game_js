@@ -4,15 +4,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="game.css">
+    <script src='game.js'></script>
 </head>
 <body>
   <section class='main'>
+    <section class='timer-display'>
+      <div class='time-remaining'>
+        00 : 10
+      </div>
+    </section>
     <p id='target'>Red</p>
     <p id='score'>0</p>
     <button class='btn btn-one' value='red'></button>
     <button class='btn btn-two' value='orange'></button>
     <button class='btn btn-three' value='green'></button>
+    <section class='start-controller'>
+      <button class='btn btn-start'>Start</button>
+    </section>
   </section>
-  <script src='game.js'></script>
 </body>
 </html>

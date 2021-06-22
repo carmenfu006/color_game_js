@@ -5,9 +5,9 @@
   max-width: 500px;
   margin: auto;
   background: #ebebeb;
-  padding: 10px;
+  padding: 30px;
   font-size: 40px;
-  margin-top: 200px;
+  margin-top: 160px;
 }
 
 button {
@@ -30,4 +30,18 @@ button:focus {outline:0;}
 
 .btn-three {
   background-color: green;
+}
+
+.start-controller {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-start {
+  background-color: blue;
+}
+
+.timer-display {
+  font-size: 40px;
 }
