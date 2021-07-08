@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const color = ['red', 'orange', 'green'];
   const text = ['Red', 'Orange', 'Green'];
   const btns = document.querySelectorAll('.btn');
+  const timeOptions = document.querySelectorAll('input[name="time"]');
   const word = document.getElementById('word');
 
   let startBtn = document.querySelector('.btn-start');
@@ -13,6 +14,13 @@ document.addEventListener('DOMContentLoaded', function() {
   let disabledGame = true;
 
   word.style.color = 'Red'
+
+  timeOptions.forEach(function (e) {
+    e.addEventListener("change", function(event) {
+      let time = event.target.value;
+      timerDisplay.innerHTML = `00 : ${time}`
+    });
+  });
 
   startBtn.addEventListener('click', function() {
     if (disabledGame === true) {
@@ -48,7 +56,14 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function setTimer() {
-    timeRemaining = 10;
+    if (id('time-1').checked) {
+      timeRemaining = Number(id('time-1').value);
+    } else if (id('time-2').checked) {
+      timeRemaining = Number(id('time-2').value);
+    } else {
+      timeRemaining = Number(id('time-3').value);
+    }
+
     timerDisplay.innerHTML = convertTime(timeRemaining);
     startBtn.innerHTML = 'Stop'
 
@@ -81,6 +96,11 @@ document.addEventListener('DOMContentLoaded', function() {
     clearTimeout(timer);
     timerDisplay.innerHTML = `Your score is ${count}`
     startBtn.innerHTML = 'Restart'
+  }
+
+  // function helper
+  function id(id) {
+    return document.getElementById(id)
   }
 });
   
