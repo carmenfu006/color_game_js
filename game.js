@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
     e.addEventListener("change", function(event) {
       let time = event.target.value;
       timerDisplay.innerHTML = `00 : ${time}`
+      startBtn.innerHTML = 'Start'
     });
   });
 
