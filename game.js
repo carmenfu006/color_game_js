@@ -1,8 +1,8 @@
-window.addEventListener('DOMContentLoaded', function() {
-  const color = ['red', 'orange', 'green']
-  const text = ['Red', 'Orange', 'Green']
+document.addEventListener('DOMContentLoaded', function() {
+  const color = ['red', 'orange', 'green'];
+  const text = ['Red', 'Orange', 'Green'];
   const btns = document.querySelectorAll('.btn');
-  const target = document.getElementById('target');
+  const word = document.getElementById('word');
 
   let startBtn = document.querySelector('.btn-start');
   let timerDisplay = document.querySelector('.time-remaining');
@@ -10,13 +10,13 @@ window.addEventListener('DOMContentLoaded', function() {
   let count = 0;
   let timer;
   let timeRemaining;
-  let disableGame = true;
+  let disabledGame = true;
 
-  target.style.color = 'Red'
+  word.style.color = 'Red'
 
   startBtn.addEventListener('click', function() {
-    if (disableGame === true) {
-      disableGame = false
+    if (disabledGame === true) {
+      disabledGame = false
       startBtn.innerHTML = 'Start'
       startGame()
       setTimer()
@@ -28,14 +28,14 @@ window.addEventListener('DOMContentLoaded', function() {
   function startGame() {
     btns.forEach(function (btn) {
       btn.addEventListener("click", function(e) {
-        if (disableGame === false) {
-          if (btn.value === target.style.color) {
+        if (disabledGame === false) {
+          if (btn.value === word.style.color) {
             count++;
           } else {
             count = 0;
           }
-          target.style.color = color[getRandNumber()];
-          target.innerHTML = text[getRandNumber()];
+          word.style.color = color[getRandNumber()];
+          word.innerHTML = text[getRandNumber()];
   
           score.innerHTML = count;
         }
@@ -66,6 +66,7 @@ window.addEventListener('DOMContentLoaded', function() {
   function convertTime(time) {
     let mins = Math.floor(time/60);
     let secs = time % 60;
+
     if (mins < 10) {
       mins = `0${mins}`;
     }
@@ -76,7 +77,7 @@ window.addEventListener('DOMContentLoaded', function() {
   }
 
   function gameResult() {
-    disableGame = true;
+    disabledGame = true;
     clearTimeout(timer);
     timerDisplay.innerHTML = `Your score is ${count}`
     startBtn.innerHTML = 'Restart'
