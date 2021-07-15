@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
     btns.forEach(function (btn) {
       btn.addEventListener("click", function(e) {
         if (disabledGame === false) {
-          if (btn.value === word.style.color) {
+          if (e.target.value === word.style.color) {
             count++;
           } else {
             count = 0;
