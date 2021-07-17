@@ -20,6 +20,11 @@ document.addEventListener('DOMContentLoaded', function() {
       let time = event.target.value;
       timerDisplay.innerHTML = `00 : ${time}`
       startBtn.innerHTML = 'Start'
+      setDefault()
+
+      if (disabledGame === false) {
+        disabledGame = true;
+      }
     });
   });
 
@@ -27,29 +32,46 @@ document.addEventListener('DOMContentLoaded', function() {
     if (disabledGame === true) {
       disabledGame = false
       startBtn.innerHTML = 'Start'
-      startGame()
+      setDefault()
+      setGame()
       setTimer()
     } else {
       gameResult();
     }
   })
+
+  function setDefault() {
+    word.style.color = color[getRandNumber()];
+    word.innerHTML = text[getRandNumber()];
+    count = 0;
+    score.innerHTML = count;
+    clearTimeout(timer);
+  }
   
-  function startGame() {
+  function setGame() {
     btns.forEach(function (btn) {
-      btn.addEventListener("click", function(e) {
-        if (disabledGame === false) {
-          if (e.target.value === word.style.color) {
-            count++;
-          } else {
-            count = 0;
-          }
-          word.style.color = color[getRandNumber()];
-          word.innerHTML = text[getRandNumber()];
-  
-          score.innerHTML = count;
-        }
-      });
-    });
+      btn.addEventListener("click", startGame);
+    })
+  }
+
+  function stopGame() {
+    btns.forEach(function (btn) {
+      btn.removeEventListener("click", startGame);
+    })
+  }
+
+  function startGame(e) {
+    if (disabledGame === false) {
+      if (e.target.value === word.style.color) {
+        count++;
+      } else {
+        count = 0;
+      }
+      word.style.color = color[getRandNumber()];
+      word.innerHTML = text[getRandNumber()];
+
+      score.innerHTML = count;
+    }
   }
 
   function getRandNumber() {
@@ -97,6 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
     clearTimeout(timer);
     timerDisplay.innerHTML = `Your score is ${count}`
     startBtn.innerHTML = 'Restart'
+    stopGame();
   }
 
   // function helper
